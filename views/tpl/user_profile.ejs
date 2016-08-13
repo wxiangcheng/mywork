@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<% include ../layout/tr_styles.ejs %>
+	</head>
+
+	<body>
+		<!-- Wrapper -->
+		<div id="wrapper"> 
+
+			<!-- Header -->
+			<% include ../layout/base_header.ejs %>
+				
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					
+<section id="main" class="clearfix  ad-profile-page">
+<div class="container">
+		
+
+			
+			<div class="ad-profile section">	
+				<div class="user-profile">
+					<div class="user-images">
+						<img class="img-responsive" alt="User Images" src="<%= data.user.avatar %>">
+					</div>
+					<div class="user">
+						<h2>Hello, <a href="#"><%= data.user.first_name %> <%= data.user.last_name %></a></h2>
+						<h5>Created at <%= moment(data.user.create_time, "X").format("lll") %></h5>
+					</div>
+
+					<div class="favorites-user">
+						<div class="my-ads">
+							<a href="my-ads.html"><%= data.user.num_of_orders %><small>My Orders</small></a>
+						</div>
+						<div class="favorites">
+							<a href="#"><%= data.user.num_of_sales %><small>On Sales</small></a>
+						</div>
+					</div>								
+				</div><!-- user-profile -->
+						
+				<ul class="user-menu">
+					<% if (data.user.status != 0) {%>
+					<li><a href="/user/sales.html">Verify</a></li>
+					<li><a>Profile</a></li>
+					<li><a>My orders</a></li>
+					<li><a>On Sales</a></li>
+					<% } else { %>
+					<li class="active"><a href="/user">Profile</a></li>
+					<li><a href="/user/orders">My orders</a></li>
+					<li><a href="/user/sales">On Sales</a></li>
+					<% }%>	
+					
+				</ul>
+			</div><!-- ad-profile -->	
+
+			<div class="profile section">
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="user-pro-section">
+							<!-- profile-details -->
+							<div class="profile-details section">
+								<h2>Profile Details</h2>
+								<!-- form -->
+								<div class="form-group">
+									<label>First Name</label>
+									<input id="firstname" type="text" placeholder="" class="form-control cpctl" value="<%= data.user.first_name %>">
+								</div>
+								<div class="form-group">
+									<label>Last Name</label>
+									<input id="lastname" type="text" placeholder="" class="form-control cpctl" value="<%= data.user.last_name %>">
+								</div>
+
+								<div class="form-group">
+									<label>Email</label>
+									<input id="email" type="email" placeholder="" class="form-control cpctl" value="<%= data.user.email %>">
+								</div>
+
+								<div class="form-group">
+									<label>You are a</label>
+									<select id="gender" class="form-control">
+										<option value="0">Male</option>
+										<option value="1">Female</option>
+									</select>
+								</div>	
+								
+								<div class="form-group">
+									<div id="pfmsg" style="color:red;display: none;">&nbsp;</div>
+								</div>	
+								
+								<a class="btn profilebtn" >Update Profile</a>
+							</div><!-- profile-details -->
+							
+							
+							<!-- change-password -->
+							<div class="change-password section">
+								<h2>Change password</h2>
+								<!-- form -->
+								<div class="form-group">
+									<label>Old Password</label>
+									<input id="oldpwd" type="password" class="form-control cpctl">
+								</div>
+								
+								<div class="form-group">
+									<label>New password</label>
+									<input id="newpwd" type="password" class="form-control cpctl">	
+								</div>
+								
+								<div class="form-group">
+									<label>Confirm password</label>
+									<input id="newpwd2" type="password" class="form-control cpctl">
+								</div>	
+								<div class="form-group form-group-sm">
+									<div id="pwdmsg" style="color:red;display: none;">&nbsp;</div>
+								</div>	
+								
+								<a class="btn pwdbtn" >Reset Password</a>
+							</div><!-- change-password -->
+							
+							
+						</div><!-- user-pro-edit -->
+					</div><!-- profile -->
+
+					<div class="col-sm-4 text-center">
+						<div class="recommended-cta">					
+							<div class="cta">
+								<!-- single-cta -->						
+								<div class="single-cta">
+									<!-- cta-icon -->
+									<div class="cta-icon">
+										<img class="img-responsive" alt="Icon" src="images/icon/13.png">
+									</div><!-- cta-icon -->
+
+									<h4>Secure Trading</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+								</div><!-- single-cta -->
+
+								<!-- single-cta -->
+								<div class="single-cta">
+									<!-- cta-icon -->
+									<div class="cta-icon">
+										<img class="img-responsive" alt="Icon" src="images/icon/14.png">
+									</div><!-- cta-icon -->
+
+									<h4>24/7 Support</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+								</div><!-- single-cta -->
+							
+
+								<!-- single-cta -->
+								<div class="single-cta">
+									<!-- cta-icon -->
+									<div class="cta-icon">
+										<img class="img-responsive" alt="Icon" src="images/icon/15.png">
+									</div><!-- cta-icon -->
+
+									<h4>Easy Trading</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+								</div><!-- single-cta -->
+
+								<!-- single-cta -->
+								<div class="single-cta">
+									<h5>Need Help?</h5>
+									<p><span>Give a call on</span><a href=""> 08000000000</a></p>
+								</div><!-- single-cta -->
+							</div>
+						</div><!-- cta -->
+					</div><!-- recommended-cta-->
+				</div><!-- row -->	
+			</div>				
+		</div><!-- container -->
+	</section><!-- ad-profile-page -->
+				</div>
+			</div>
+			
+			<!-- Footer -->
+			<% include ../layout/base_footer.ejs %>
+		</div>
+		
+		<!-- Scripts -->
+		<% include ../layout/tr_scripts.ejs %>
+		
+	</body>
+
+</html>
+
+
+

@@ -1,0 +1,4 @@
+<div class="enter"><% if (locals.user && locals.user.id) { %>
+		<div  id="userblock">Welcome,<a id="loggeduser" href="/user"><%= (locals.user.last_name ? locals.user.last_name : locals.user.email) %></a>. <a href="#" class="logout">Logout</a></div>
+	<% } else { %><div  id="signinblock"><a href="/login.html">Sign In</a> | <a href="login.html">Sign Up</a></div> <% } %>
+</div>

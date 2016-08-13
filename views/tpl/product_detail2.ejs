@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<% include ../layout/base_styles.ejs %>
+	</head>
+
+	<body>
+		<!-- Wrapper -->
+		<div id="wrapper"> 
+
+			<!-- Header -->
+			<% include ../layout/base_header.ejs %>
+				
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					
+<% if (errmsg != ""){ %>
+<%= errmsg %>
+<%  } else {%>	
+<span><%= data.product.id %></span><br/>
+<span><%= data.product.description %></span><br/>
+<span><%= data.product.category %></span><br/>
+<span><%= data.product.condition %></span><br/>
+<span><%= data.product.is_delivery %></span><br/>
+<span><%= data.product.images %></span><br/>
+<span><%= data.product.is_negotiable %></span><br/>
+<span><%= data.product.price %></span><br/>
+<span><%= data.product.return_policy %></span><br/>
+<span><%= data.product.thumb %></span><br/>
+<img src="<%= data.product.thumb %>"></img><br/>
+<span><%= data.product.user_id %></span><br/>
+<span><%= data.product.keywords %></span><br/>
+<span><%= moment(data.product.create_time, "X").format("lll")%></span><br/>
+<span><%= data.product.status %></span><br/>
+<span><%= moment(data.product.last_time, "X").format("lll")%></span><br/>
+<span><%= moment(data.product.publish_time, "X").format("lll")%></span><br/>
+<span><%= data.product.fav %></span><br/>
+<span><%= data.product.views %></span><br/>
+<span><%= data.product.domain %></span><br/>
+<%  } %>	
+				</div>
+			</div>
+			
+			<!-- Footer -->
+			<% include ../layout/base_footer.ejs %>
+		</div>
+		
+		<!-- Scripts -->
+		<% include ../layout/base_scripts.ejs %>
+		
+	</body>
+
+</html>
+
+
+

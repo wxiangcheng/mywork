@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<% include ../layout/base_styles.ejs %>
+	</head>
+
+	<body>
+		<!-- Wrapper -->
+		<div id="wrapper"> 
+
+			<!-- Header -->
+			<% include ../layout/base_header.ejs %>
+				
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					<div class="banner-form">
+					<form action="#">
+						<!-- category-change -->
+						<div class="dropdown category-dropdown">						
+							<a href="#" data-toggle="dropdown"><span class="change-text">Select Category</span> <i class="fa fa-angle-down"></i></a>
+							<ul class="dropdown-menu category-change">
+								<li><a href="#">Fashion &amp; Beauty</a></li>
+								<li><a href="#">Cars &amp; Vehicles</a></li>
+								<li><a href="#">Electronics &amp; Gedgets</a></li>
+								<li><a href="#">Real Estate</a></li>
+								<li><a href="#">Sports &amp; Games</a></li>
+							</ul>								
+						</div><!-- category-change -->
+					
+						<input type="text" placeholder="Type Your key word" class="form-control">
+						<button value="Search" class="form-control" type="submit">Search</button>
+					</form>
+				</div>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Description</th>
+			<th>Category</th>
+			<th>Keywords</th>
+			<th>Price</th>
+			<th>publish_time</th>
+			<th>ID</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if (errmsg == ""){
+			data.products.forEach(function (v, k){ %>
+			<tr>
+            <td><a href="/product/<%=v.id %>" target="<%=v.id %>"><%= v.description %></a></td>
+			<td><%= v.category %></td>
+			<td><%= v.keywords %></td>
+			<td><%= v.price %></td>
+			<td><%= moment(v.publish_time, "X").format("lll") %></td>
+			<td><%= v.id %></td>
+			</tr>
+		<%  })
+			} %>
+	</tbody>
+</table>
+<% if (errmsg != ""){ %>
+<%= errmsg %>
+<%  } %>
+<nav>
+	<% if (errmsg == ""){ %>
+  <ul class="pagination">
+  	<% if (data.page.has_prev == 1) { %>
+    <li>
+      <a href="/products%>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <% } %>
+    <% for (i = 1; i <= data.page.pn_count; i++) {%>
+    	<li	<% if (data.page.pn == i) { %>
+    			class="active"
+    			<% } %>><a href="/products/<%=i%>"><%= i %></a></li>
+    <% } %>
+    
+    <% if (data.page.has_next == 1) { %>
+    <li>
+      <a href="/products/<%=(data.page.pn+1)%>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+     <% } %>
+    
+  </ul>
+  
+  <%  } %>
+</nav>
+				</div>
+			</div>
+			
+			<!-- Footer -->
+			<% include ../layout/base_footer.ejs %>
+		</div>
+		
+		<!-- Scripts -->
+		<% include ../layout/base_scripts.ejs %>
+		
+	</body>
+
+</html>
+
+
+
